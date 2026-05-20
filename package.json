@@ -1,0 +1,38 @@
+{
+  "name": "claude-tdd",
+  "version": "0.1.0",
+  "description": "TDD-first CLI: you write tests, Claude writes implementation code.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "claude-tdd": "./dist/cli.js",
+    "ctd": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "scripts": {
+    "build": "bun build src/cli.ts --outfile dist/cli.js --target bun",
+    "build:compile": "bun build src/cli.ts --compile --outfile dist/claude-tdd",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "tdd",
+    "cli",
+    "anthropic",
+    "claude",
+    "bun"
+  ],
+  "author": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0"
+  },
+  "devDependencies": {
+    "bun-types": "^1.3.3",
+    "typescript": "^5.9.3"
+  }
+}
