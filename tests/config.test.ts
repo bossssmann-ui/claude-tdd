@@ -29,12 +29,18 @@ describe('resolveMaxAttempts', () => {
 
 describe('resolveConfig', () => {
   const originalApiKey = process.env.ANTHROPIC_API_KEY
+  const originalModel = process.env.CLAUDE_TDD_MODEL
 
   afterEach(() => {
     if (originalApiKey === undefined) {
       delete process.env.ANTHROPIC_API_KEY
     } else {
       process.env.ANTHROPIC_API_KEY = originalApiKey
+    }
+    if (originalModel === undefined) {
+      delete process.env.CLAUDE_TDD_MODEL
+    } else {
+      process.env.CLAUDE_TDD_MODEL = originalModel
     }
   })
 
@@ -55,5 +61,12 @@ describe('resolveConfig', () => {
   it('throws when api key is missing', () => {
     delete process.env.ANTHROPIC_API_KEY
     expect(() => resolveConfig({})).toThrow('Missing Anthropic API key. Set ANTHROPIC_API_KEY or pass --api-key.')
+  })
+
+  it('uses CLAUDE_TDD_MODEL when cli model is not provided', () => {
+    process.env.ANTHROPIC_API_KEY = 'env-key'
+    process.env.CLAUDE_TDD_MODEL = 'haiku'
+    const cfg = resolveConfig({})
+    expect(cfg.model).toBe('claude-haiku-4-5-20251001')
   })
 })

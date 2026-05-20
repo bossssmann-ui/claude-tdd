@@ -35,7 +35,7 @@ export function resolveConfig(input: {
 
   return {
     apiKey,
-    model: resolveModel(input.model),
+    model: resolveModel(input.model ?? process.env.CLAUDE_TDD_MODEL),
     silent: Boolean(input.silent),
     maxAttempts: resolveMaxAttempts(input.maxAttempts),
   }

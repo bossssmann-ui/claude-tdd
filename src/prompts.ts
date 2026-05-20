@@ -11,7 +11,7 @@ Rules:
 4. Prefer the most permissive types that satisfy the test. Do not over-engineer with generics unless the test requires them.
 5. No console.log, no debug code, no TODO comments.
 6. Do not modify or quote the test file. Only output the implementation.
-7. If the test imports from a relative path like ../foo, your output is the contents of foo.ts (or matching extension).
+7. If the test imports from a relative path like \`../foo\`, your output is the contents of \`foo.ts\` (or matching extension).
 8. If context files are provided, use them as ground truth for types and existing utilities. Do not redefine what they export.
 9. Write idiomatic code for the apparent framework: Bun/Hono on backend, React/TanStack on frontend, Prisma for DB.
 10. Code must be self-contained: if a helper is needed, include it inline unless it's expected to come from a context file.`
